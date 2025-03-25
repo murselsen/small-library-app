@@ -1,12 +1,12 @@
 {
-  "name": "habibe-goit",
+  "name": "small-library-app",
   "private": true,
-  "version": "0.0.143",
+  "version": "0.0.144",
   "type": "module",
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "vite build --base=//",
+    "build": "vite build --base=/small-library-app/",
     "preview": "vite preview",
     "goLive": "npm run dev",
     "goPreview": "npm run build && npm run preview"
