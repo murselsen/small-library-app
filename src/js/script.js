@@ -8,10 +8,15 @@ const bookList = document.querySelector("#bookList");
 let bookListArray = JSON.parse(localStorage.getItem("bookListArray") || "[]");
 
 const addBookData = (book) => {
-  bookListArray.push(book);
-  console.log("Book List:", bookListArray);
-  localStorage.setItem("booklistArray", bookListArray);
-  addBookToUI(book);
+  try {
+    bookListArray.push(book);
+    console.log("Book List:", bookListArray);
+    localStorage.setItem("booklistArray", bookListArray);
+    addBookToUI(book);
+    
+  } catch (error) {
+    
+  }
 };
 
 const addBookToUI = (book) => {
