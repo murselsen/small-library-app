@@ -15,13 +15,14 @@ const bookList = document.querySelector("#bookList");
 let bookListArray;
 
 const getBookListData = () => {
-  return JSON.parse(localStorage.getItem("bookListArray") || "[]");
+  return JSON.parse(localStorage.getItem("booklistArray"));
 };
 
-console.log("Book List:", bookListArray);
 const addBookData = (book) => {
   try {
     console.log("Before Book List:", bookListArray);
+
+    if (bookListArray)
 
     bookListArray.push(book);
     console.log("Push After Book List:", bookListArray);
@@ -48,7 +49,7 @@ const addBookToUI = (book) => {
   const bookItem = document.createElement("li");
   bookItem.className = "bookItem";
 
-  bookItem.innerHTML = `<div class="bookContent"><span><b>Kitap Adı:</b> ${book.name}</span><span><b>Yazar Adı:</b> ${book.author}</span></div>`;
+  bookItem.innerHTML = `<div class="bookContent"><span><b>Kitap Kımlik:</b> ${book.id}</span> <span><b>Kitap Adı:</b> ${book.name}</span><span><b>Yazar Adı:</b> ${book.author}</span></div>`;
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Sil";
@@ -59,11 +60,21 @@ const addBookToUI = (book) => {
 
   deleteButton.addEventListener("click", (e) => {
     bookItem.remove();
-    bookListArray = bookListArray.filter((item) => item.id !== book.id);
-    console.log("Removed : ", bookListArray);
-    localStorage.setItem("bookListArray", JSON.stringify(bookListArray));
+    let bookListArrayFilter = bookListArray.filter(
+      (item) => item.id !== book.id
+    );
+    console.log("Removed : ", bookListArrayFilter);
+    localStorage.setItem("bookListArray", JSON.stringify(bookListArrayFilter));
   });
 };
+
+bookListArray = getBookListData();
+
+console.log("Book List:", bookListArray);
+
+bookListArray.forEach((book) => {
+  addBookToUI(book);
+});
 
 addBookButton.addEventListener("click", () => {
   const valueBookId = bookListArray.length + 1;
@@ -78,11 +89,4 @@ addBookButton.addEventListener("click", () => {
 
   bookName.value = "";
   bookAuthor.value = "";
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  bookListArray = getBookListData();
-  bookListArray.forEach((book) => {
-    addBookToUI(book);
-  });
 });
