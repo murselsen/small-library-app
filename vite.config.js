@@ -1,5 +1,7 @@
 import { defineConfig } from "vite";
-console.log(process.env.APP_NAME);
+import proccess from "process";
+console.log(process.env.pwd);
+console.log(process);
 export default defineConfig({
   // Vite'nin proje kök dizinini belirtir ve GitHub Pages'te yayınlamak için gerekli olan alt dizini belirtir
   base: process.env.NODE_ENV === "development" ? "./" : "/small-library-app/",
