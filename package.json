@@ -1,7 +1,7 @@
 {
   "name": "small-library-app",
   "private": false,
-  "version": "1.0.319",
+  "version": "1.0.320",
   "type": "module",
   "scripts": {
     "start": "vite",
