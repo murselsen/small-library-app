@@ -22,24 +22,30 @@ const addBookData = (book) => {
   try {
     console.log("Before Book List:", bookListArray);
 
-    if (bookListArray === null ) {
+    if (bookListArray === null) {
       bookListArray = []; // Array Initialize
       bookListArray.push(book);
     } else {
-      if (bookListArray.length > 0) { 
+      if (bookListArray.length > 0) {
         book.id = bookListArray.pop().id + 1;
         bookListArray.push(book);
+      } else {
+        bookListArray.push(book);
       }
-      
     }
 
     console.log("Push After Book List:", bookListArray);
 
     console.log("Book List:", bookListArray);
-    /* localStorage.setItem(
+    localBookListArray = JSON.parse(
+      localStorage.getItem(localStorageBookListKey)
+    );
+    localBookListArray.push(book);
+    console.log("Local Book List:", localBookListArray);
+    localStorage.setItem(
       localStorageBookListKey,
-      JSON.stringify(bookListArray)
-    ); */
+      JSON.stringify(localBookListArray)
+    );
     addBookToUI(book);
 
     iziToast.success({
