@@ -19,22 +19,27 @@ const addBookData = (book) => {
     bookListArray.push(book);
     console.log("Book List:", bookListArray);
     localStorage.setItem("booklistArray", bookListArray);
-    addBookToUI(book);
+    addBookToU_I(book);
   } catch (error) {
-    iziToast;
+    console.error("Error:", error);
+    asd;
+    iziToast.error({
+      title: "Error",
+      message: error.message,
+    });
   }
 };
 
 const addBookToUI = (book) => {
   const bookItem = document.createElement("li");
-  bookItem.innerHTML = `<tr>
-  <td> <b>ID:</b> ${book.id}</td>
-  <td> <b>Name:</b> ${book.name}</td>
-  <td> <b>Author:</b> ${book.author}</td>
-  </tr>`;
+  bookItem.className = "bookItem";
+
+  bookItem.innerHTML = `
+  <div class="bookContent"><span><b>Kitap Adı:</b> ${book.name}</span><span><b>Yazar Adı:</b> ${book.author}</span></div>`;
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Sil";
+  deleteButton.className = "delete-btn";
 
   bookItem.appendChild(deleteButton);
   bookList.appendChild(bookItem);

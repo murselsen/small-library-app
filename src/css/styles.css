@@ -53,7 +53,7 @@ button:hover {
   margin-top: 20px;
 }
 
-.bookList li {
+.bookList .bookItem {
   background: #fff;
   margin: 5px 0;
   padding: 10px;
@@ -62,6 +62,12 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bookList .bookItem .bookContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .delete-btn {
