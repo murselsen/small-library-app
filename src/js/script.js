@@ -90,16 +90,18 @@ if (bookListArray !== null) {
 addBookButton.addEventListener("click", () => {
   console.log("Add Book Button Clicked");
   console.log(bookListArray);
-  let valueBookId;
-  if (bookListArray === null) {
-    valueBookId = 1;
-  } else {
+  let valueBookId = 1;
+  if (bookListArray !== null) {
     valueBookId = bookListArray.pop().id + 1;
   }
   const valueBookName = bookName.value;
   const valueAuthorName = bookAuthor.value;
 
-
+  addBookData({
+    id: valueBookId,
+    name: valueBookName,
+    author: valueAuthorName,
+  });
 
   bookName.value = "";
   bookAuthor.value = "";
