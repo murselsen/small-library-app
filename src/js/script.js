@@ -7,14 +7,25 @@ let bookListArray = JSON.parse(localStorage.getItem("bookListArray") || "[]");
 console.log(bookListArray);
 
 const addBookData = (book) => {
-  let result = [...bookListArray, book];
-  localStorage.setItem("booklistArray", result);
+  bookListArray.push(book);
+  console.log("Book List:", bookListArray);
+  localStorage.setItem("booklistArray", bookListArray);
 };
 
+const addBookToUI = (book) => {
+  const bookItem = document.createElement("li");
+  bookItem.textContent = `<b>ID:</b> ${book.id} | ${book.name} - ${book.author}`;
+ };
+
+
+
 addBookButton.addEventListener("click", () => {
+  const valueBookId = bookListArray.length + 1;
   const valueBookName = bookName.value;
   const valueAuthorName = bookAuthor.value;
-  bookListArray.push({
+
+  addBookData({
+    id: valueBookId,
     name: valueBookName,
     author: valueAuthorName,
   });
