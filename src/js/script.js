@@ -1,4 +1,4 @@
-
+console.log(process.env.NODE_ENV);
 
 const addBookButton = document.querySelector("#addBook");
 const bookName = document.querySelector("#bookName");
@@ -6,7 +6,6 @@ const bookAuthor = document.querySelector("#authorName");
 const bookList = document.querySelector("#bookList");
 
 let bookListArray = JSON.parse(localStorage.getItem("bookListArray") || "[]");
-console.log(bookListArray);
 
 const addBookData = (book) => {
   bookListArray.push(book);
