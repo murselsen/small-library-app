@@ -15,7 +15,11 @@ const addBookData = (book) => {
 
 const addBookToUI = (book) => {
   const bookItem = document.createElement("li");
-  bookItem.innerHTML = `<b>ID: ${book.id}</b> <strong>${book.name}</strong>  ${book.author} `;
+  bookItem.innerHTML = `<tr>
+  <td> <b>ID:</b> ${book.id}</td>
+  <td> <b>Name:</b> ${book.name}</td>
+  <td> <b>Author:</b> ${book.author}</td>
+  </tr>`;
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Sil";
