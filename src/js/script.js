@@ -14,6 +14,7 @@ const bookList = document.querySelector("#bookList");
 
 let bookListArray = JSON.parse(localStorage.getItem("bookListArray") || "[]");
 
+console.log("Book List:", bookListArray);
 const addBookData = (book) => {
   try {
     bookListArray.push(book);
@@ -51,9 +52,14 @@ const addBookToUI = (book) => {
   deleteButton.addEventListener("click", (e) => {
     bookItem.remove();
     bookListArray = bookListArray.filter((item) => item.id !== book.id);
+    console.log("Removed : ", bookListArray);
     localStorage.setItem("bookListArray", JSON.stringify(bookListArray));
   });
 };
+
+bookListArray.forEach((book) => {
+  addBookToUI(book);
+});
 
 addBookButton.addEventListener("click", () => {
   const valueBookId = bookListArray.length + 1;
