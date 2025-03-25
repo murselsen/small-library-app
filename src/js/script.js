@@ -18,12 +18,17 @@ const addBookData = (book) => {
   try {
     bookListArray.push(book);
     console.log("Book List:", bookListArray);
-    localStorage.setItem("booklistArray", bookListArray);
-    addBookToU_I(book);
+    localStorage.setItem("booklistArray", JSON.stringify(bookListArray));
+    addBookToUI(book);
+
+    iziToast.success({
+      position: "topRight",
+      title: "Başarılı",
+      message: `${book.name} adlı kitap başarıyla eklendi`,
+    });
   } catch (error) {
-    console.error("Error:", error);
-    asd;
     iziToast.error({
+      position: "topRight",
       title: "Error",
       message: error.message,
     });
@@ -34,8 +39,7 @@ const addBookToUI = (book) => {
   const bookItem = document.createElement("li");
   bookItem.className = "bookItem";
 
-  bookItem.innerHTML = `
-  <div class="bookContent"><span><b>Kitap Adı:</b> ${book.name}</span><span><b>Yazar Adı:</b> ${book.author}</span></div>`;
+  bookItem.innerHTML = `<div class="bookContent"><span><b>Kitap Adı:</b> ${book.name}</span><span><b>Yazar Adı:</b> ${book.author}</span></div>`;
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Sil";
