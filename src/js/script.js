@@ -1,6 +1,6 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-console.log(process.env.);
+console.log(process.env.NODE_ENV);
 
 console.log(process.env.NODE_ENV);
 
