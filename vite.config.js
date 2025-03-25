@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   // Vite'nin proje kök dizinini belirtir ve GitHub Pages'te yayınlamak için gerekli olan alt dizini belirtir
-  base: process.env.NODE_ENV === "development" ? "./" : "/simple-library-app/",
+  base: process.env.NODE_ENV === "development" ? "./" : "/small-library-app/",
   // Vite'nin proje kök dizini olarak 'src' klasörünü kullanmasını sağlar
   root: "src",
   // Sunucu Ayarları
