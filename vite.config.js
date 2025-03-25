@@ -5,17 +5,20 @@ export default defineConfig({
   base: process.env.NODE_ENV === "development" ? "./" : "/simple-library-app/",
   // Vite'nin proje kök dizini olarak 'src' klasörünü kullanmasını sağlar
   root: "src",
+  // Sunucu Ayarları
   server: {
     // Tarayıcı Başlat
     open: true,
-    // Port Ayarla
+    // Port Ayarla (Varsayılan: 5173)
     port: 9000,
     // Dış Bağlantıları Kabul Et
-    cors: true,
+    cors: false,
   },
+  // Çıkış Ayarları
   build: {
     // Çıktıyı proje kökünde 'dist' klasörüne alır
     outDir: "../dist",
+    // Çıktı klasörünü temizler
     emptyOutDir: true,
   },
 });

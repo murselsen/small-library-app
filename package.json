@@ -9,8 +9,6 @@
     "build": "vite build",
     "deploy": "npm run build && gh-pages -d dist",
     "preview": "vite preview",
-    "goLive": "npm run dev",
-    "goPreview": "npm run build && npm run preview"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",
