@@ -10,14 +10,25 @@ const addBookData = (book) => {
   bookListArray.push(book);
   console.log("Book List:", bookListArray);
   localStorage.setItem("booklistArray", bookListArray);
+  addBookToUI(book);
 };
 
 const addBookToUI = (book) => {
   const bookItem = document.createElement("li");
-  bookItem.textContent = `<b>ID:</b> ${book.id} | ${book.name} - ${book.author}`;
- };
+  bookItem.innerHTML = `<b>ID: ${book.id}</b> <strong>${book.name}</strong>  ${book.author} `;
 
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Sil";
 
+  bookItem.appendChild(deleteButton);
+  bookList.appendChild(bookItem);
+
+  deleteButton.addEventListener("click", (e) => {
+    bookItem.remove();
+    bookListArray = bookListArray.filter((item) => item.id !== book.id);
+    localStorage.setItem("bookListArray", JSON.stringify(bookListArray));
+  });
+};
 
 addBookButton.addEventListener("click", () => {
   const valueBookId = bookListArray.length + 1;
@@ -29,6 +40,7 @@ addBookButton.addEventListener("click", () => {
     name: valueBookName,
     author: valueAuthorName,
   });
+
   bookName.value = "";
   bookAuthor.value = "";
 });
