@@ -1,3 +1,7 @@
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
+console.log(process.env.);
+
 console.log(process.env.NODE_ENV);
 
 const addBookButton = document.querySelector("#addBook");
@@ -13,9 +17,8 @@ const addBookData = (book) => {
     console.log("Book List:", bookListArray);
     localStorage.setItem("booklistArray", bookListArray);
     addBookToUI(book);
-    
   } catch (error) {
-    
+    iziToast;
   }
 };
 
