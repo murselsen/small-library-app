@@ -11,24 +11,31 @@ const addBookButton = document.querySelector("#addBook");
 const bookName = document.querySelector("#bookName");
 const bookAuthor = document.querySelector("#authorName");
 const bookList = document.querySelector("#bookList");
-
+const localStorageBookListKey = "booklistArray";
 let bookListArray;
 
 const getBookListData = () => {
-  return JSON.parse(localStorage.getItem("booklistArray"));
+  return JSON.parse(localStorage.getItem(localStorageBookListKey));
 };
 
 const addBookData = (book) => {
   try {
     console.log("Before Book List:", bookListArray);
 
-    if (bookListArray)
+    if (bookListArray.length === 0) {
+      bookListArray.push(book);
+    } else {
+      book.id = bookListArray.pop().id + 1;
+      bookListArray.push(book);
+    }
 
-    bookListArray.push(book);
     console.log("Push After Book List:", bookListArray);
 
     console.log("Book List:", bookListArray);
-    localStorage.setItem("booklistArray", JSON.stringify(bookListArray));
+    localStorage.setItem(
+      localStorageBookListKey,
+      JSON.stringify(bookListArray)
+    );
     addBookToUI(book);
 
     iziToast.success({
@@ -64,28 +71,35 @@ const addBookToUI = (book) => {
       (item) => item.id !== book.id
     );
     console.log("Removed : ", bookListArrayFilter);
-    localStorage.setItem("bookListArray", JSON.stringify(bookListArrayFilter));
+    localStorage.setItem(
+      localStorageBookListKey,
+      JSON.stringify(bookListArrayFilter)
+    );
   });
 };
 
 bookListArray = getBookListData();
 
 console.log("Book List:", bookListArray);
-
-bookListArray.forEach((book) => {
-  addBookToUI(book);
-});
+if (bookListArray !== null) {
+  bookListArray.forEach((book) => {
+    addBookToUI(book);
+  });
+}
 
 addBookButton.addEventListener("click", () => {
-  const valueBookId = bookListArray.length + 1;
+  console.log("Add Book Button Clicked");
+  console.log(bookListArray);
+  let valueBookId;
+  if (bookListArray === null) {
+    valueBookId = 1;
+  } else {
+    valueBookId = bookListArray.pop().id + 1;
+  }
   const valueBookName = bookName.value;
   const valueAuthorName = bookAuthor.value;
 
-  addBookData({
-    id: valueBookId,
-    name: valueBookName,
-    author: valueAuthorName,
-  });
+
 
   bookName.value = "";
   bookAuthor.value = "";
