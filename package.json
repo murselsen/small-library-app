@@ -1,12 +1,12 @@
 {
   "name": "small-library-app",
   "private": false,
-  "version": "1.0.151",
+  "version": "1.0.152",
   "type": "module",
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "vite build --base=/small-library-app/",
+    "build": "vite build ",
     "deploy": "npm run build && gh-pages -d dist",
     "preview": "vite preview",
     "goLive": "npm run dev",
