@@ -1,7 +1,7 @@
 {
   "name": "small-library-app",
   "private": true,
-  "version": "0.0.144",
+  "version": "0.0.145",
   "type": "module",
   "scripts": {
     "start": "vite",
@@ -12,6 +12,7 @@
     "goPreview": "npm run build && npm run preview"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "vite": "^6.2.0"
   },
   "dependencies": {
