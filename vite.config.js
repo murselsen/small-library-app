@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-
+console.log(process.env.NODE_ENV);
 export default defineConfig({
   root: "src", // Vite'nin proje kök dizini olarak 'src' klasörünü kullanmasını sağlar
   server: {

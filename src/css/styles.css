@@ -79,9 +79,11 @@ ul li {
 }
 
 #bookList {
+  padding: 10px;
   width: 100%;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
