@@ -12,20 +12,28 @@ const bookName = document.querySelector("#bookName");
 const bookAuthor = document.querySelector("#authorName");
 const bookList = document.querySelector("#bookList");
 
-let bookListArray = JSON.parse(localStorage.getItem("bookListArray") || "[]");
+let bookListArray;
+
+const getBookListData = () => {
+  return JSON.parse(localStorage.getItem("bookListArray") || "[]");
+};
 
 console.log("Book List:", bookListArray);
 const addBookData = (book) => {
   try {
+    console.log("Before Book List:", bookListArray);
+
     bookListArray.push(book);
+    console.log("Push After Book List:", bookListArray);
+
     console.log("Book List:", bookListArray);
     localStorage.setItem("booklistArray", JSON.stringify(bookListArray));
     addBookToUI(book);
 
     iziToast.success({
       position: "topRight",
-      title: "Başarılı",
-      message: `${book.name} adlı kitap başarıyla eklendi`,
+      title: `${book.name}`,
+      message: `adlı kitap başarıyla eklendi`,
     });
   } catch (error) {
     iziToast.error({
@@ -57,10 +65,6 @@ const addBookToUI = (book) => {
   });
 };
 
-bookListArray.forEach((book) => {
-  addBookToUI(book);
-});
-
 addBookButton.addEventListener("click", () => {
   const valueBookId = bookListArray.length + 1;
   const valueBookName = bookName.value;
@@ -74,4 +78,11 @@ addBookButton.addEventListener("click", () => {
 
   bookName.value = "";
   bookAuthor.value = "";
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  bookListArray = getBookListData();
+  bookListArray.forEach((book) => {
+    addBookToUI(book);
+  });
 });
