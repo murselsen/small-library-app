@@ -1,12 +1,10 @@
 import { defineConfig } from "vite";
-console.log(
-  process.env.NODE_ENV === "development"
-    ? "Development Mode"
-    : "Production Mode"
-);
+
 export default defineConfig({
-  base: 
-  root: "src", // Vite'nin proje kök dizini olarak 'src' klasörünü kullanmasını sağlar
+  // Vite'nin proje kök dizinini belirtir ve GitHub Pages'te yayınlamak için gerekli olan alt dizini belirtir
+  base: process.env.NODE_ENV === "development" ? "./" : "/simple-library-app/",
+  // Vite'nin proje kök dizini olarak 'src' klasörünü kullanmasını sağlar
+  root: "src",
   server: {
     // Tarayıcı Başlat
     open: true,
