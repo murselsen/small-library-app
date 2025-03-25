@@ -77,3 +77,10 @@ ul li {
 .delete-btn:hover {
   background: #c82333;
 }
+
+#bookList {
+  width: 100%;
+  border: 1px solid black;
+  border-style: groove;
+  border-
+}
